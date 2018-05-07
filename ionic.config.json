@@ -1,0 +1,8 @@
+{
+  "name": "hangman",
+  "app_id": "44f05a79",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}

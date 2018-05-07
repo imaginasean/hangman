@@ -1,0 +1,136 @@
+*{
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  grid-gap: 0px;
+  width: 100vw;
+  height: 100vh;
+}
+
+.box {
+  color: #fff;
+  border-radius: 5px;
+  padding: 0px;
+  font-size: 150%;
+}
+.game-area {
+  background-color: blue;
+  grid-column: 1 / 4;
+  grid-row: 1 /6;
+  z-index: 10;
+}
+.game-timer {
+  background-color: yellow;
+  grid-column: 3 / 4;
+  grid-row: 1;
+  z-index: 11;
+}
+.game-letters {
+  background-color: violet;
+  grid-row: 6 / 7;
+  grid-column: 1/4;
+  display: grid;
+  grid-gap: 0px;
+  grid-template-columns: repeat(9, 1fr);
+}
+
+.game-letters-1 {
+  background-color: red;
+  grid-row: 1;
+  grid-column: 1;
+  align-self: center;
+  text-align: center;
+}
+.game-letters-2 {
+  background-color: red;
+  grid-row: 1;
+  grid-column: 2;
+  align-self: center;
+  text-align: center;
+}
+.game-letters-3 {
+  background-color: red;
+  grid-row: 1;
+  grid-column: 3;
+  align-self: center;
+  text-align: center;
+}
+.game-letters-4 {
+  background-color: red;
+  grid-row: 1;
+  grid-column: 4;
+  align-self: center;
+  text-align: center;
+}
+.game-letters-5 {
+  background-color: red;
+  grid-row: 1;
+  grid-column: 5;
+  align-self: center;
+  text-align: center;
+}
+.game-letters-6 {
+  background-color: red;
+  grid-row: 1;
+  grid-column: 6;
+  align-self: center;
+  text-align: center;
+}
+.game-letters-7 {
+  background-color: red;
+  grid-row: 1;
+  grid-column: 7;
+  align-self: center;
+  text-align: center;
+}
+.game-letters-8 {
+  background-color: red;
+  grid-row: 1;
+  grid-column: 8;
+  align-self: center;
+  text-align: center;
+}
+.game-letters-9 {
+  background-color: red;
+  grid-row: 1;
+  grid-column: 9;
+  align-self: center;
+  text-align: center;
+}
+
+.sickle {
+  background: lightblue;
+  width: 200px;
+  height: 200px;
+  margin: 20px auto;
+
+  animation: spin 2s infinite ease-in-out;
+
+}
+
+@keyframes spin {
+  0%   {
+    transform-origin: top center;
+    transform-style: preserve-3D;
+    transform: rotate(-45deg);
+  }
+  50% {
+    transform-origin: top center;
+    transform-style: preserve-3D;
+    transform: rotate(45deg);
+  }
+
+  100%   {
+    transform-origin: top center;
+    transform-style: preserve-3D;
+    transform: rotate(-45deg);
+  }
+}
+
+
+

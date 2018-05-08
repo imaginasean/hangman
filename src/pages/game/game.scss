@@ -3,6 +3,21 @@
   padding: 0;
   margin: 0;
 }
+
+@font-face {
+  font-family: 'Skranji';
+  font-weight: 400;
+  font-style: normal;
+  src: url('/assets/fonts/Skranji-Regular.ttf') format('truetype')
+}
+
+@font-face {
+  font-family: 'Skranji Bold';
+  font-weight: 700;
+  font-style: normal;
+  src: url('/assets/fonts/Skranji-Bold.ttf') format('truetype')
+}
+
 .wrapper {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -10,6 +25,9 @@
   grid-gap: 0px;
   width: 100vw;
   height: 100vh;
+  background-image: url('/assets/imgs/dungeon.png');
+  background-position: center center;
+  background-size: 100vw 100vh;
 }
 
 .box {
@@ -19,84 +37,109 @@
   font-size: 150%;
 }
 .game-area {
-  background-color: blue;
   grid-column: 1 / 4;
   grid-row: 1 /6;
   z-index: 10;
 }
 .game-timer {
-  background-color: yellow;
+  font-family: 'Skranji';
+  color:#fff;
+  font-weight:bold;
+  font-size:36pt;
   grid-column: 3 / 4;
   grid-row: 1;
   z-index: 11;
+  align-self: center;
+  text-align: center;
+  text-shadow: 1px 1px 2px black, 0 0 25px red, 0 0 5px darkred;
 }
+
+.game-misses-left {
+  font-family: 'Skranji';
+  color:#fff;
+  font-weight:bold;
+  font-size:36pt;
+  grid-column: 1 / 2;
+  grid-row: 1;
+  z-index: 11;
+  align-self: center;
+  text-align: center;
+  text-shadow: 1px 1px 2px black, 0 0 25px green, 0 0 5px darkgreen;
+}
+
 .game-letters {
-  background-color: violet;
+  font-family: 'Skranji';
   grid-row: 6 / 7;
   grid-column: 1/4;
   display: grid;
   grid-gap: 0px;
   grid-template-columns: repeat(9, 1fr);
+  text-decoration: underline;
+  font-size:24pt;
+  z-index:15;
 }
 
+.game-letters-selected {
+  grid-row: 7 / 8;
+  grid-column: 1/4;
+  grid-gap: 0px;
+  text-align: left;
+ font-size:12pt;
+ padding:10px;
+ font-family: 'Skranji';
+ z-index:13;
+}
+
+
 .game-letters-1 {
-  background-color: red;
   grid-row: 1;
   grid-column: 1;
   align-self: center;
   text-align: center;
 }
 .game-letters-2 {
-  background-color: red;
   grid-row: 1;
   grid-column: 2;
   align-self: center;
   text-align: center;
 }
 .game-letters-3 {
-  background-color: red;
   grid-row: 1;
   grid-column: 3;
   align-self: center;
   text-align: center;
 }
 .game-letters-4 {
-  background-color: red;
   grid-row: 1;
   grid-column: 4;
   align-self: center;
   text-align: center;
 }
 .game-letters-5 {
-  background-color: red;
   grid-row: 1;
   grid-column: 5;
   align-self: center;
   text-align: center;
 }
 .game-letters-6 {
-  background-color: red;
   grid-row: 1;
   grid-column: 6;
   align-self: center;
   text-align: center;
 }
 .game-letters-7 {
-  background-color: red;
   grid-row: 1;
   grid-column: 7;
   align-self: center;
   text-align: center;
 }
 .game-letters-8 {
-  background-color: red;
   grid-row: 1;
   grid-column: 8;
   align-self: center;
   text-align: center;
 }
 .game-letters-9 {
-  background-color: red;
   grid-row: 1;
   grid-column: 9;
   align-self: center;
@@ -104,14 +147,115 @@
 }
 
 .sickle {
-  background: lightblue;
+  position: absolute;
+  left:100px;top:50px;
   width: 200px;
   height: 200px;
-  margin: 20px auto;
-
+  margin: 0px auto;
+  background-image: url('/assets/imgs/pendulum.png');
+  background-position: center center;
+  background-size: 200px 200px;
   animation: spin 2s infinite ease-in-out;
-
+  z-index:7;
 }
+
+.rope {
+  position: absolute;
+  left:155px;top:-675px;
+  margin: 0px;
+  width:100px;
+  height: 750px;
+  background-image: url('/assets/imgs/rope.png');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 50px 750px;
+  z-index: 12;
+  animation: spin2 2s infinite ease-in-out;
+}
+
+.pedestal {
+  position: absolute;
+  left:0vw; top:100vh;
+  width: 100vw;
+  height: 153px;
+  margin: 0px auto;
+  background-image: url('/assets/imgs/pedestal.png');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 118px 153px;
+  animation: movein 1.5s ease-in-out;
+  animation-fill-mode: forwards;
+  z-index:5;
+}
+
+.game-container {
+  position:relative;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.game-over {
+  grid-column: 1 / 4;
+  grid-row: 1 /6;
+  z-index: 20;
+  align-self: center;
+  text-align: center;
+  visibility: hidden;
+  color:red;
+  font-size: 100pt;
+  font-family: 'Skranji';
+  font-weight:bold;
+  text-shadow: 1px 1px 2px black, 0 0 25px red, 0 0 5px darkred;
+}
+
+.game-over-winner {
+  grid-column: 1 / 4;
+  grid-row: 1 /6;
+  z-index: 20;
+  align-self: center;
+  text-align: center;
+  visibility: hidden;
+  color:green;
+  font-size: 100pt;
+  font-family: 'Skranji';
+  font-weight:bold;
+  text-shadow: 1px 1px 2px black, 0 0 25px green, 0 0 5px darkgreen;
+}
+
+
+.letter-selected {
+  grid-column: 1 / 4;
+  grid-row: 1 /6;
+  z-index: 30;
+  align-self: center;
+  text-align: center;
+  visibility: visible;
+  color:whitesmoke;
+  font-size: 150pt;
+  font-family: 'Skranji';
+  font-weight:bold;
+  text-shadow: 0 0 40px whitesmoke;
+  animation: goodletter 1.5s ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+
+.game-over-go-again {
+  grid-column: 1 / 4;
+  grid-row: 5 /6;
+  z-index: 40;
+  align-self: center;
+  text-align: center;
+  visibility: hidden;
+  color:white;
+  font-size: 20pt;
+  font-family: 'Skranji';
+  font-weight:bold;
+  button {
+    padding:30px; font-size:25pt;
+  }
+ }
 
 @keyframes spin {
   0%   {
@@ -129,6 +273,45 @@
     transform-origin: top center;
     transform-style: preserve-3D;
     transform: rotate(-45deg);
+  }
+}
+
+@keyframes spin2 {
+  0%   {
+    transform-origin: top center;
+    transform-style: preserve-3D;
+    transform: rotate(-1deg);
+  }
+  50% {
+    transform-origin: top center;
+    transform-style: preserve-3D;
+    transform: rotate(1deg);
+  }
+
+  100%   {
+    transform-origin: top center;
+    transform-style: preserve-3D;
+    transform: rotate(-1deg);
+  }
+}
+
+@keyframes movein {
+  0%   {
+    top:100vh;
+  }
+
+  100%   {
+    top:78vh;
+  }
+}
+
+@keyframes goodletter {
+  0% { text-shadow: 0 0 40px whitesmoke; }
+  to {
+    transform:
+      scale(2);
+      text-shadow: 0 0 20px whitesmoke;
+    opacity: 0;
   }
 }
 

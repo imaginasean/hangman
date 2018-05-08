@@ -3,20 +3,37 @@
 <ion-content>
   <div class="wrapper">
     <div class="box game-area">
-      <div class="sickle"></div>
-      <button ion-button secondary (click)="toggle($event)">toggle</button>
+      <div class="game-container">
+        <div class="rope" [style.top]="ropeTop"></div>
+        <div class="sickle" [style.top]="sickleTop"></div>
+        <div class="pedestal"></div>
+      </div>
     </div>
-    <div class="box game-timer">Two</div>
+    <div class="game-over" [style.visibility]="gameOverCss">YOU LOSE!</div>
+    <div class="game-over-winner" [style.visibility]="gameOverWinnerCss">YOU WIN!</div>
+    <div class="game-over-go-again" [style.visibility]="(isGameOver && (isWinner || isLoser)) ? 'visible' : 'hidden'">
+      <button ion-button (click)="setupGame()">Play Again</button>
+    </div>
+    <div class="letter-selected">GO!</div>
+    <div class="box game-timer">
+      <span style="font-size:15pt;">Timer</span><br/>
+      {{ secondsLeft }}</div>
+    <div class="box game-misses-left">
+      <span style="font-size:15pt;">Misses Left</span><br/>
+      {{maxMisses - misses }}</div>
     <div class="box game-letters">
-      <div class="box game-letters-1">1</div>
-      <div class="box game-letters-2">2</div>
-      <div class="box game-letters-3">3</div>
-      <div class="box game-letters-4">4</div>
-      <div class="box game-letters-5">5</div>
-      <div class="box game-letters-6">6</div>
-      <div class="box game-letters-7">7</div>
-      <div class="box game-letters-8">8</div>
-      <div class="box game-letters-9">9</div>
+      <div class="box game-letters-1" [innerHTML]="L1" [style.visibility]="wordToGuess.length>7 ? 'visible':'hidden'" [style.textDecoration]="L1Revealed == true ? 'none': 'inherit'" [style.color]="L1Revealed == true ? 'crimson': 'inherit'"></div>
+      <div class="box game-letters-2" [innerHTML]="L2" [style.visibility]="wordToGuess.length>5 ? 'visible':'hidden'" [style.textDecoration]="L2Revealed == true ? 'none': 'inherit'" [style.color]="L2Revealed == true ? 'crimson':'inherit' "></div>
+      <div class="box game-letters-3" [innerHTML]="L3" [style.color]="L3Revealed == true ? 'crimson': 'inherit'"></div>
+      <div class="box game-letters-4" [innerHTML]="L4" [style.color]="L4Revealed == true ? 'crimson': 'inherit'"></div>
+      <div class="box game-letters-5" [innerHTML]="L5" [style.color]="L5Revealed == true ? 'crimson': 'inherit'"></div>
+      <div class="box game-letters-6" [innerHTML]="L6" [style.color]="L6Revealed == true ? 'crimson':'inherit' "></div>
+      <div class="box game-letters-7" [innerHTML]="L7" [style.color]="L7Revealed == true ? 'crimson': 'inherit'"></div>
+      <div class="box game-letters-8" [innerHTML]="L8"  [style.color]="L8Revealed == true ? 'crimson':'inherit' " [style.visibility]="wordToGuess.length>5 ? 'visible':'hidden'"></div>
+      <div class="box game-letters-9" [innerHTML]="L9"  [style.color]="L9Revealed == true ? 'crimson':'inherit' " [style.visibility]="wordToGuess.length>7 ? 'visible':'hidden'"></div>
+    </div>
+    <div class="box game-letters-selected" [style.visibility]="gameLettersUsed != '' ? 'visible' : 'hidden'">
+      Chosen: {{ gameLettersUsed }}
     </div>
   </div>
 </ion-content>

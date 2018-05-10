@@ -4,19 +4,6 @@
   margin: 0;
 }
 
-@font-face {
-  font-family: 'Skranji';
-  font-weight: 400;
-  font-style: normal;
-  src: url('/assets/fonts/Skranji-Regular.ttf') format('truetype')
-}
-
-@font-face {
-  font-family: 'Skranji Bold';
-  font-weight: 700;
-  font-style: normal;
-  src: url('/assets/fonts/Skranji-Bold.ttf') format('truetype')
-}
 
 .wrapper {
   display: grid;
@@ -183,9 +170,35 @@
   background-position: center center;
   background-repeat: no-repeat;
   background-size: 118px 153px;
-  animation: movein 1.5s ease-in-out;
+  animation: movein .3s ease-in-out;
   animation-fill-mode: forwards;
   z-index:5;
+}
+
+.melon {
+  position: absolute;
+  left:0vw; top:-20vh;
+  width: 100vw;
+  height: 100px;
+  margin: 0px auto;
+  background-image: url('/assets/imgs/melon.png');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 100px 100px;
+  z-index:6;
+}
+
+.melon-split {
+  position: absolute;
+  left:0vw; top:68vh;
+  width: 100vw;
+  height: 100px;
+  margin: 0px auto;
+  background-image: url('/assets/imgs/melonsplit.png');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 200px 100px;
+  z-index:6;
 }
 
 .game-container {
@@ -308,11 +321,66 @@
 @keyframes goodletter {
   0% { text-shadow: 0 0 40px whitesmoke; }
   to {
-    transform:
-      scale(2);
-      text-shadow: 0 0 20px whitesmoke;
+    transform: scale(2);
+    text-shadow: 0 0 20px whitesmoke;
     opacity: 0;
   }
+}
+
+@keyframes melondrop {
+  0% {
+    top:-20vh; 
+  }
+  100% {
+    top:68vh;
+  }
+}
+
+@keyframes bounce {
+  0% {
+    top:-20vh;
+  }
+   20%, 53%, 80%{
+    -webkit-transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+    transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+    top:68vh;
+  }
+  100% {
+    -webkit-transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+    transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+    top:68vh;
+  }
+
+  40%, 43% {
+    -webkit-transition-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
+    transition-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
+    top:60vh;
+  }
+
+  70% {
+    -webkit-transition-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
+    transition-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
+    top:64vh;
+  }
+
+  90% {
+    top:66vh;
+  }
+}
+
+.bounce {
+  -webkit-animation-name: bounce;
+  animation-name: bounce;
+  -webkit-transform-origin: center bottom;
+  transform-origin: center bottom;
+}
+
+.animated {
+  animation-delay:.5s;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
 }
 
 

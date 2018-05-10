@@ -14,3 +14,17 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+@font-face {
+    font-family: 'Skranji';
+    font-weight: 400;
+    font-style: normal;
+    src: url('/assets/fonts/Skranji-Regular.ttf') format('truetype')
+  }
+  
+  @font-face {
+    font-family: 'Skranji Bold';
+    font-weight: 700;
+    font-style: normal;
+    src: url('/assets/fonts/Skranji-Bold.ttf') format('truetype')
+  }
+  

@@ -1,14 +1,12 @@
-<ion-header>
-  <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title>Home</ion-title>
-  </ion-navbar>
-</ion-header>
 
-<ion-content padding>
-  <h3>Sliceman</h3>
 
-  <button ion-button secondary (click)="open($event, item)">Play</button>
+<ion-content>
+  <div class="wrapper">
+    <div class="box game-title-area">
+        <h2 class="neon">Slicer</h2>
+    </div>
+    <div class="box game-button-area">
+      <button ion-button secondary (click)="open($event, item)" class="game-button">Play</button>
+    </div>
+  </div>
 </ion-content>

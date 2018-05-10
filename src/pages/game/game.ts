@@ -22,7 +22,8 @@ export class GamePage implements OnInit, OnDestroy {
   public misses:number = 0;
   public maxMisses:number = 10;
   public lettersFound:number = 0;
-  public pxPerMiss:number = 32;
+  public pxPerMiss:number = 28;
+  public pxPerLastMiss:number = 34;
   public secondsPerDrop:number = 10;
   public sickleTop:string = "50px";
   public ropeTop:string = "-675px";
@@ -135,7 +136,7 @@ export class GamePage implements OnInit, OnDestroy {
   }
 
   pickWord() {
-    return this.wordList[Math.floor((Math.random() * this.wordList.length) + 1)];
+    return this.wordList[Math.floor((Math.random() * this.wordList.length))];
   }
 
   processLetter(letter) {
@@ -176,8 +177,8 @@ export class GamePage implements OnInit, OnDestroy {
   markMiss() {
     //check for game over condition, if not, start timer again
     this.misses++;
-    this.sickleTop = (50 + (this.pxPerMiss * this.misses)) + "px";
-    this.ropeTop = (this.ropeTopStart + (this.pxPerMiss * this.misses)) + "px";
+    this.sickleTop = (50 + ((this.misses == this.maxMisses ?  this.pxPerLastMiss : this.pxPerMiss) * this.misses)) + "px";
+    this.ropeTop = (this.ropeTopStart + ((this.misses == this.maxMisses ?  this.pxPerLastMiss : this.pxPerMiss) * this.misses)) + "px";
     this.checkForGameOver();
   }
 

@@ -7,7 +7,7 @@ import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { GamePage } from '../pages/game/game';
 import { Observable } from "rxjs/Observable";
-import { interval } from 'rxjs/Observable/interval';
+import { interval } from 'rxjs/observable/interval';
 import "rxjs/add/observable/interval";
 
 @Component({

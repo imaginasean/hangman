@@ -2,7 +2,7 @@ import {Component, OnInit, OnDestroy} from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { Subscription } from "rxjs";
 import { Observable } from "rxjs/Observable";
-import { interval } from 'rxjs/Observable/interval';
+import { interval } from 'rxjs/observable/interval';
 import { HostListener } from '@angular/core';
 import "rxjs/add/observable/interval";
 import "rxjs/add/operator/take";

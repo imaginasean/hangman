@@ -4,6 +4,7 @@ import { Subscription } from "rxjs";
 import { Observable } from "rxjs/Observable";
 import { interval } from 'rxjs/observable/interval';
 import { HostListener } from '@angular/core';
+import { Keyboard } from '@ionic-native/keyboard';
 import "rxjs/add/observable/interval";
 import "rxjs/add/operator/take";
 import "rxjs/add/operator/map";
@@ -70,7 +71,7 @@ export class GamePage implements OnInit, OnDestroy {
       this.processLetter(event.key);
   }
 
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController, public keyboard: Keyboard) {
 
   }
   ngOnInit() {
@@ -133,6 +134,7 @@ export class GamePage implements OnInit, OnDestroy {
     this.ropeTop = this.ropeTopStart + "px"
     this.startTimer();
     this.gameLettersUsed = '';
+    this.keyboard.show();
   }
 
   pickWord() {

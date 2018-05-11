@@ -12,7 +12,8 @@ import { interval } from 'rxjs/observable/interval';
 import "rxjs/add/observable/interval";
 
 @Component({
-  templateUrl: 'app.html'
+  templateUrl: 'app.html',
+  providers: [Keyboard]
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
